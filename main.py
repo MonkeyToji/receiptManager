@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import json
-from practice import receiptConverter
+from receiptToPoints import receiptConverter
 
 app = Flask(__name__)
 
@@ -9,8 +9,7 @@ def home():
     if request.method == "POST":
         receipt = request.json
         output = receiptConverter(receipt)
-        print(output)
-        return
+        return output
     else:
         return render_template('index.html')
 
