@@ -9,7 +9,7 @@ def home():
     if request.method == "POST":
         receipt = request.json
         output = receiptConverter(receipt)
-        return output
+        return jsonify(output)
     else:
         return render_template('index.html')
 
