@@ -1,15 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for
-from practice import wordCheck
+import json
+from practice import receiptConverter
 
 app = Flask(__name__)
 
 @app.route("/", methods=["POST", "GET"])
 def home():
     if request.method == "POST":
-        receipt = request.form['receiptInput']
-        output = wordCheck(receipt)
+        receipt = request.json
+        output = receiptConverter(receipt)
         print(output)
-        return redirect(url_for("home"))
+        return
     else:
         return render_template('index.html')
 

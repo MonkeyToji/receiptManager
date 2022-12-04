@@ -1,21 +1,72 @@
-def wordCheck(words):
-    if words == "hello world":
-        return "You did it!"
+import math
+
+def receiptConverter(receipt):
+    points = 0
+    businessName = receipt['retailer']
+    items = receipt['items']
+    date = receipt['purchaseDate'].split("-")
+    time = receipt['purchaseTime']
+    total = receipt['total'].split(".")
+
+# Handles converting name to point value
+    for char in businessName:
+        if char.isalnum():
+            points += 1
+
+# Handles converting total to point value
+    if total[1] == '00':
+        points += 50
+        points += 25
+    elif total[1] == '25':
+        points += 25
+    elif total[1] == '50':
+        points += 25
+    elif total[1] == '75':
+        points += 25
     else:
-        return "That was rude."
+        points += 0
+
+# Handles converting Items to point values
+    numberOfitems = len(items)
+    if numberOfitems % 2 == 1:
+        pairsOfitems = int((numberOfitems - 1) / 2)
+        points += (pairsOfitems * 5)
+    else:
+        pairsOfitems = int((numberOfitems) / 2)
+        points += (pairsOfitems * 5)
+
+# Handles converting item description to points
+    for item in items:
+        itemDescription = item['shortDescription']
+        if len(itemDescription) % 3 == 0:
+            itemCost = float(item['price'])
+            points += math.ceil(itemCost * 00.2)
 
 
-#receipt conversion breakdown
-#
-#
-#
-#
-#
-#
+# Handle converting date to points
+    militaryTime = int(time.replace(':',''))
+    if militaryTime > 1200 or militaryTime < 1400:
+        points += 10
+
+
+# Handle date converting
+    day = int(date[2])
+    if day % 2 == 1:
+        points += 6
+
+
+    return points
+
+
+
+
+
+##################################################################################################
 #example receipt
 #
 #
-# {
+#
+# receipt = {
 #   "retailer": "Target",
 #   "purchaseDate": "2022-01-01",
 #   "purchaseTime": "13:01",
@@ -39,3 +90,26 @@ def wordCheck(words):
 #   ],
 #   "total": "35.35"
 # }
+
+# receiptTwo = {
+#   "retailer": "M&M Corner Market",
+#   "purchaseDate": "2022-03-20",
+#   "purchaseTime": "14:33",
+#   "items": [
+#     {
+#       "shortDescription": "Gatorade",
+#       "price": "2.25"
+#     },{
+#       "shortDescription": "Gatorade",
+#       "price": "2.25"
+#     },{
+#       "shortDescription": "Gatorade",
+#       "price": "2.25"
+#     },{
+#       "shortDescription": "Gatorade",
+#       "price": "2.25"
+#     }
+#   ],
+#   "total": "9.00"
+# }
+##################################################################################################
