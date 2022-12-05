@@ -57,7 +57,7 @@ def receiptConverter(receipt):
     if day % 2 == 1:
         points += 6
 
-
+    print(points)
     return points
 
 
