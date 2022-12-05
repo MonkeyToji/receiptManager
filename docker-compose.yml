@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "8080:3000"
+  postman_test:
+    build:
+      dockerfile: DockerfilePostman
+      context: .
+    depends_on:
+      - web
