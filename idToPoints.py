@@ -1,4 +1,4 @@
 def idConverter(idValue):
-    points = idValue["id"].split('--')
+    points = idValue.split('--')
     output = points[1]
-    return {"points": output}
+    return {"points": int(output)}
