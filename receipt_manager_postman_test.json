@@ -1,37 +1,10 @@
 {
 	"info": {
-		"_postman_id": "7d035a39-42ff-4a7e-b445-bf3b18c65c8a",
+		"_postman_id": "5b92b2cc-c62e-4aa5-94e5-57ba1b4c6e0c",
 		"name": "Receipt Manager",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "Confirm endpoint is available",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", () => {\r",
-							"  pm.expect(pm.response.code).to.eql(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}",
-					"host": [
-						"{{url}}"
-					]
-				}
-			},
-			"response": []
-		},
 		{
 			"name": "Readme Example (Target) Returns Correct Answer",
 			"event": [
@@ -62,9 +35,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}",
+					"raw": "{{url}}receipts/process",
 					"host": [
-						"{{url}}"
+						"{{url}}receipts"
+					],
+					"path": [
+						"process"
 					]
 				}
 			},
@@ -100,9 +76,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}",
+					"raw": "{{url}}receipts/process",
 					"host": [
-						"{{url}}"
+						"{{url}}receipts"
+					],
+					"path": [
+						"process"
 					]
 				}
 			},
