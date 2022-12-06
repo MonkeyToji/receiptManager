@@ -57,11 +57,11 @@ def receiptConverter(receipt):
     if day % 2 == 1:
         points += 6
 
-# Handles
+# Handles making id
     dateMerge = '-'.join(date)
     businessNameMerge = businessName.replace(' ', '')
 
-    return {'id': 'abc' + str(businessNameMerge).lower() + '--' + str(points) + '--' + str(dateMerge) + 'xyz'}
+    return {'id': 'abc' + str(businessNameMerge).lower() + '--' + str(points) + '--' + str(dateMerge) + 'xyz', 'points': points}
 
 
 
