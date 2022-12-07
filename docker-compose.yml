@@ -4,6 +4,12 @@ services:
     build: .
     ports:
       - "8000:5000"
+  pytest_test:
+    build:
+      dockerfile: DockerfilePytest
+      context: .
+    depends_on:
+      - web
   postman_test:
     build:
       dockerfile: DockerfilePostman
