@@ -1,4 +1,4 @@
-from receiptToPoints import receiptConverter
+from receiptToPoints import receiptConverter, num_items_to_points
 
 receipt = {
   "retailer": "Target",
@@ -52,3 +52,9 @@ def test_receiptChecks():
 
 def test_receiptChecksTwo():
     assert receiptConverter(receiptTwo) == {'id': 'abcm&mcornermarket--109--2022-03-20xyz', 'points': 109}
+
+def test_num_items_to_points_empty_list():
+    assert num_items_to_points([]) == 0
+
+def test_num_items_to_points_two_items():
+    assert num_items_to_points(["nachos", "burritos"]) == 5

@@ -1,5 +1,16 @@
 import math
 
+def num_items_to_points(items):
+    points = 0
+    numberOfitems = len(items)
+    if numberOfitems % 2 == 1:
+        pairsOfitems = int((numberOfitems - 1) / 2)
+        points += (pairsOfitems * 5)
+    else:
+        pairsOfitems = int((numberOfitems) / 2)
+        points += (pairsOfitems * 5)
+    return points
+
 def receiptConverter(receipt):
     points = 0
     businessName = receipt['retailer']
@@ -28,13 +39,7 @@ def receiptConverter(receipt):
 
 
 # Handles converting Items to point values
-    numberOfitems = len(items)
-    if numberOfitems % 2 == 1:
-        pairsOfitems = int((numberOfitems - 1) / 2)
-        points += (pairsOfitems * 5)
-    else:
-        pairsOfitems = int((numberOfitems) / 2)
-        points += (pairsOfitems * 5)
+    points += num_items_to_points(items)
 
 
 # Handles converting item description to points
@@ -61,5 +66,3 @@ def receiptConverter(receipt):
     businessNameMerge = businessName.replace(' ', '')
 
     return {'id': 'abc' + str(businessNameMerge).lower() + '--' + str(points) + '--' + str(dateMerge) + 'xyz', 'points': points}
-
-
