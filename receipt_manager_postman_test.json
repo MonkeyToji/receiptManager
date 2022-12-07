@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5b92b2cc-c62e-4aa5-94e5-57ba1b4c6e0c",
+		"_postman_id": "33d59eb7-dcba-490f-909a-ad6305226c99",
 		"name": "Receipt Manager",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -82,6 +82,86 @@
 					],
 					"path": [
 						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Readme Exanmple (Target/Points)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"The response is correct\", () => {",
+							"    var response = pm.response.json();",
+							"    console.log(response)",
+							"    pm.expect(response).to.eql({'points': 25});",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/receipts/abctarget--25--2022-01-01xyz/points",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"receipts",
+						"abctarget--25--2022-01-01xyz",
+						"points"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Readme Exanmple (M&M/Points) Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"The response is correct\", () => {",
+							"    var response = pm.response.json();",
+							"    console.log(response)",
+							"    pm.expect(response).to.eql({'points': 109});",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/receipts/abcm&mcornermarket--109--2022-03-20xyz/points",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"receipts",
+						"abcm&mcornermarket--109--2022-03-20xyz",
+						"points"
 					]
 				}
 			},
